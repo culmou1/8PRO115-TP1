@@ -18,71 +18,60 @@ class DocumentPapier{
   // Par default les variables sont privés (doit être appeler avec un méthode)
 
 protected:
-
-  std::string editeur;
-  std::string titre;
-  int nbPage;
-  int annee;
+	std::string editeur;
+	std::string titre;
+	int nbPage;
+	int annee;
 
 
 public:
+	DocumentPapier(base *Object){
+		editeur = Object->editeur;
+		titre = Object->titre;
+		nbPage = Object->nbPage;
+		annee = Object->annee;
+	}; // constructeur
 
-  DocumentPapier(base *Object){
-    editeur = Object->editeur;
-    titre = Object->titre;
-    nbPage = Object->nbPage;
-    annee = Object->annee;
-  }; // constructeur
-
-  virtual ~DocumentPapier() {};
-
-
-   virtual std::string getEditeur  (){
-     return editeur;
-   }
-
-   virtual void setEditeur (const std::string& papierEditeur){
-
-      editeur = papierEditeur;
-   }
+	virtual ~DocumentPapier() {};
 
 
-   virtual std::string getTitre  (){
-     return titre;
-   }
+	virtual std::string getEditeur  (){
+		return editeur;
+	}
 
-   virtual void setTitre (const std::string& papierTitre){
+	virtual void setEditeur (std::string papierEditeur){
+		editeur = papierEditeur;
+	}
 
-     titre = papierTitre;
-   }
+	virtual std::string getTitre  (){
+		return titre;
+	}
 
-   virtual int getNbPage  (){
+	virtual void setTitre (std::string papierTitre){
+		titre = papierTitre;
+	}
 
-     std::cout << nbPage << "\n";
-     return nbPage;
-   }
+	virtual int getNbPage  (){
+		return nbPage;
+	}
 
-   virtual void setPage (int papierNbPage){
+	virtual void setPage (int papierNbPage){
+		nbPage = papierNbPage;
+	}
 
-     nbPage = papierNbPage;
-   }
+	virtual int getAnnee (){
+		return annee;
+	}
 
+	virtual void setAnnes (int papierAnnee){
+		annee = papierAnnee;
+	}
 
-   virtual int getAnnee (){
-     return annee;
-   }
-
-   virtual void setAnnes (int papierAnnee){
-
-     annee = papierAnnee;
-   }
-
-   virtual void parleDeToi  (){
-
-     std::cout << "Je suis un livre, mon titre est " << titre << " , mon auteur " <<
-     "est " <<  " , mon editeur est " << editeur << " , je suis compose de " <<
-     nbPage << " pages et je suis né en " << annee << "\n";
-   }
+	virtual void parleDeToi  (){
+		std::cout << ", mon titre est \"" << titre <<  "\", mon editeur est "
+		<< editeur << " , je suis compose de " << nbPage
+		<< " pages et je suis ne en " << annee;
+	}
 
 };
 
@@ -101,12 +90,21 @@ class Livre : public DocumentPapier{
 
   	~Livre() {}
 
-  	std::string getResume(){ return resume; }
-  	void setResume (std::string papierResume){ resume = papierResume; }
+	std::string getResume() {
+		return resume;
+	}
 
-  	std::string getAuteur(){ return auteur; }
-  	void setAuteur (std::string papierAuteur){ auteur = papierAuteur; }
+	void setResume (std::string livreResume) {
+		resume = livreResume;
+	}
 
+	std::string getAuteur() {
+		return auteur;
+	}
+
+	void setAuteur (std::string livreAuteur) {
+		auteur = livreAuteur;
+	}
   	virtual void parleDeToi(DocumentPapier xyz) {
   		std::cout << "Je suis un livre, mon auteur est " << auteur;
   		xyz.parleDeToi();
@@ -114,17 +112,53 @@ class Livre : public DocumentPapier{
   	}
   };
 
-  class Dictionnaire : public Livre{
 
 
-  private:
-      int nbMots;
-      std::string langueSource; // Anglais
-      std::string langueCible; // Francais
 
-  };
-  class Revue : public DocumentPapier{
+class Dictionnaire : public Livre{
+protected:
+    int nbMots;
+    std::string langueSource; // Anglais
+    std::string langueCible; // Francais
 
+public :
+	Dictionnaire (base *Object, std::string sum, std::string aut, int nbWords, std::string lSource, std::string lCible) :
+		Livre (Object, sum, aut), nbMots(nbWords), langueSource(lSource), langueCible(lCible) {}
+
+	~Dictionnaire() {};
+
+	int getNbMots() {
+		return nbMots;
+	}
+
+	void setNbMots (int dicNbMots) {
+		nbMots = dicNbMots;
+	}
+
+	std::string getLangueSource() {
+		return langueSource;
+	}
+
+	void setLangueSource (std::string dicLangueSource) {
+		langueSource = dicLangueSource;
+	}
+
+	std::string getLangueCible(){
+		return langueCible;
+	}
+
+	void setLangueCible (std::string dicLangueCible) {
+		langueCible = dicLangueCible;
+	}
+
+	void parleDeToi (DocumentPapier xyz) {
+		std::cout << "Je suis un dictionnaire " << langueSource+ "-" +langueCible << " de " << nbMots << " mots, mon auteur est " << auteur;
+		xyz.parleDeToi();
+		std::cout << ", et mon resume est \"" << resume << "\".\n";
+	}
+};
+
+class Revue : public DocumentPapier{
 
   protected:
       int nbArticle;
@@ -137,27 +171,26 @@ class Livre : public DocumentPapier{
 
   ~Revue(){}
 
-
   virtual int getNbArticle (){
-   return this.nbArticle;
+   return nbArticle;
   }
 
   virtual void setNbArticle (int revueNbArticle){
 
-   this.nbArticle = this.revueNbArticle;
+   nbArticle = revueNbArticle;
 
   }
 
 
   virtual std::string getEditorial (){
 
-   return this.editorial;
+   return editorial;
 
   }
 
   virtual void setEditorial (int revueEditorial){
 
-   this.nbArticle = this.revueEditorial;
+   nbArticle = revueEditorial;
 
   }
 
