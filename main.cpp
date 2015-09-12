@@ -19,6 +19,9 @@ int main(){
 
 	Livre livre (pDoc, "Cours de Programmation Object", "Hamid Mcheick");
 	livre.parleDeToi(livre);
+	
+	Dictionnaire dico (pDoc, "Cours de Programmation Object", "Hamid Mcheick", 2000, "Anglais", "Francais");
+	dico.parleDeToi(dico);
 
 	system("pause");
 
