@@ -1,25 +1,27 @@
 #include <iostream>
+#include <string>
 #include "class.h"
 
 using namespace std;
 
 
 int main(){
-
-  Object; // Struc declaration
-  Object.titre = "8PRO115";
-  Object.editeur = "Hamid Mcheick";
-  Object.nbPage = 1;
-  Object.annee = 2015;
+	pDoc = new base;
 
 
-  DocumentPapier papier(Object);
+	pDoc->annee = 2015;
+	pDoc->editeur = "UQAC";
+	pDoc->titre = "8PROO";
+	pDoc->nbPage = 1;
 
-  papier.getNbPage();
+	/*DocumentPapier papier(pDoc);
+	papier.parleDeToi();*/
 
+	Livre livre (pDoc, "Cours de Programmation Object", "Hamid Mcheick");
+	livre.parleDeToi(livre);
 
+	system("pause");
 
-
-
+	delete pDoc;
   return 0;
 }
