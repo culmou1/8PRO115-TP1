@@ -6,7 +6,6 @@ class DocumentPapier{
 
   // Par default les variables sont privés (doit être appeler avec un méthode)
 
-  std::string auteur;
   std::string editeur;
   std::string titre;
   int nbPage;
