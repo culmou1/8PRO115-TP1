@@ -1,10 +1,23 @@
 #include <iostream>
+#include <string>
 
 // J'ai pas trouver d'autre nom pour factoriser encore plus les classes
 // Les autres classe vont érité de cette classe
+
+// Declaration de notre object au début
+
+struct base {
+    std::string editeur;
+    std::string titre;
+    int nbPage;
+    int annee;
+} Object;
+
 class DocumentPapier{
 
   // Par default les variables sont privés (doit être appeler avec un méthode)
+
+protected:
 
   std::string editeur;
   std::string titre;
@@ -14,23 +27,18 @@ class DocumentPapier{
 
 public:
 
-  article(); // constructeur
+  DocumentPapier(base Object){
+    editeur = Object.editeur;
+    titre = Object.titre;
+    nbPage = Object.nbPage;
+    annee = Object.annee;
+  }; // constructeur
 
-  virtual ~article();
-
-   virtual void getAuteur const (){
-     std:: cout << auteur << "\n";
-   }
-
-   virtual void setAuteur (const std::string& papierAuteur){
-
-     auteur = papierAuteur;
-
-   }
+  virtual ~DocumentPapier() {};
 
 
-   virtual void getEditeur const (){
-     std::cout << editeur << "\n";
+   virtual std::string getEditeur  (){
+     return editeur;
    }
 
    virtual void setEditeur (const std::string& papierEditeur){
@@ -39,17 +47,19 @@ public:
    }
 
 
-   virtual void getTitre const (){
-     std::cout << titre << "\n";
+   virtual std::string getTitre  (){
+     return titre;
    }
 
    virtual void setTitre (const std::string& papierTitre){
 
-     titre = papierTitre
+     titre = papierTitre;
    }
 
-   virtual void getNbPage const (){
-     std::cout << nbPage  << "\n";
+   virtual int getNbPage  (){
+
+     std::cout << nbPage << "\n";
+     return nbPage;
    }
 
    virtual void setPage (int papierNbPage){
@@ -58,8 +68,8 @@ public:
    }
 
 
-   virtual void getAnnee const (){
-     std::cout << nbPage  << "\n";
+   virtual int getAnnee (){
+     return annee;
    }
 
    virtual void setAnnes (int papierAnnee){
@@ -67,10 +77,10 @@ public:
      annee = papierAnnee;
    }
 
-   virtual void parleDeToi const (){
+   virtual void parleDeToi  (){
 
      std::cout << "Je suis un livre, mon titre est " << titre << " , mon auteur " <<
-     "est " << auteur << " , mon editeur est " << editeur << " , je suis compose de " <<
+     "est " <<  " , mon editeur est " << editeur << " , je suis compose de " <<
      nbPage << " pages et je suis né en " << annee << "\n";
    }
 
@@ -84,9 +94,13 @@ class Livre : public DocumentPapier{
 
 private:
   std::string resumer;
-
-
+  std::string auteur;
 };
+
+public:
+
+  Livre(base DocumentPapier,std::string resumer, std::string auteur):
+    DocumentPapier(DocumentPapier),resumer(resumer),auteur(auteur){}
 
 class Dictionnaire : public Livre{
 
@@ -112,6 +126,4 @@ class Acte : public Revue{
 private:
     std::string nomConference;
     std::string addresseConference;
-
-
 };
