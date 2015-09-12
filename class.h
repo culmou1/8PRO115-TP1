@@ -11,7 +11,7 @@ struct base {
     std::string titre;
     int nbPage;
     int annee;
-} Object;
+} *pDoc;
 
 class DocumentPapier{
 
@@ -27,11 +27,11 @@ protected:
 
 public:
 
-  DocumentPapier(base Object){
-    editeur = Object.editeur;
-    titre = Object.titre;
-    nbPage = Object.nbPage;
-    annee = Object.annee;
+  DocumentPapier(base *Object){
+    editeur = Object->editeur;
+    titre = Object->titre;
+    nbPage = Object->nbPage;
+    annee = Object->annee;
   }; // constructeur
 
   virtual ~DocumentPapier() {};
