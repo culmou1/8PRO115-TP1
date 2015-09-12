@@ -90,21 +90,31 @@ public:
 
 // voici comment nous fesont de l'héritage
 class Livre : public DocumentPapier{
+protected:
+	std::string resume;
+	std::string auteur;
 
-
-private:
-  std::string resumer;
-  std::string auteur;
-};
-
-public:
-
-  // Declation constructeur Class(Super_classe param,string param, string param):
+public :
+	
+	// Declation constructeur Class(Super_classe param,string param, string param):
     // Declaration immédiate des variables de l'object
-  Livre(base DocumentPapier,std::string resumer, std::string auteur):
-    DocumentPapier(DocumentPapier),resumer(resumer),auteur(auteur){}
+	Livre (base *Object, std::string sum, std::string aut) : 
+		DocumentPapier(Object), resume(sum), auteur(aut) {}
 
-  virtual ~Livre(){}
+	~Livre() {}
+
+	std::string getResume(){ return resume; }
+	void setResume (std::string papierResume){ resume = papierResume; }
+
+	std::string getAuteur(){ return auteur; }
+	void setAuteur (std::string papierAuteur){ auteur = papierAuteur; }
+
+	virtual void parleDeToi(DocumentPapier xyz) {
+		std::cout << "Je suis un livre, mon auteur est " << auteur;
+		xyz.parleDeToi();
+		std::cout << ", et mon resume est \"" << resume << "\".\n";
+	}
+};
 
 class Dictionnaire : public Livre{
 
