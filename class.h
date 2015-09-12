@@ -210,7 +210,7 @@ class Acte : public Revue{
 
   public:
 
-    Acte (base *Object,std::string revueNbArticle,std::string revueEditorial,std::string acteNomConf,
+    Acte (base *Object,int revueNbArticle,std::string revueEditorial,std::string acteNomConf,
     std::string acteAddConf) :
       Revue(Object,revueNbArticle,revueEditorial),nomConference(acteNomConf),adresseConference(acteAddConf) {}
 
@@ -243,6 +243,6 @@ class Acte : public Revue{
         std::cout << "Je suis un acte, mon editorial est " << editorial;
         xyz.parleDeToi();
         std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n" <<
-        "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference "\" . \n" ;
+        "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
       }
 };
