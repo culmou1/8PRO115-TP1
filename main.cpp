@@ -6,7 +6,7 @@ using namespace std;
 
 
 int main(){
-	pDoc = new base;
+	pDoc = new struct base;
 
 
 	pDoc->annee = 2015;
@@ -19,6 +19,9 @@ int main(){
 
 	Livre livre (pDoc, "Cours de Programmation Object", "Hamid Mcheick");
 	livre.parleDeToi(livre);
+
+  Revue revueAnimal (pDoc,10,"Les animaux de la Jungles");
+  revueAnimal.parleDeToi(revueAnimal);
 
 	system("pause");
 

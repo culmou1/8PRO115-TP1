@@ -86,58 +86,93 @@ public:
 
 };
 
-
-
 // voici comment nous fesont de l'héritage
 class Livre : public DocumentPapier{
-protected:
-	std::string resume;
-	std::string auteur;
+  protected:
+  	std::string resume;
+  	std::string auteur;
 
-public :
-	
-	// Declation constructeur Class(Super_classe param,string param, string param):
-    // Declaration immédiate des variables de l'object
-	Livre (base *Object, std::string sum, std::string aut) : 
-		DocumentPapier(Object), resume(sum), auteur(aut) {}
+  public :
 
-	~Livre() {}
+  	// Declation constructeur Class(Super_classe param,string param, string param):
+      // Declaration immédiate des variables de l'object
+  	Livre (base *Object, std::string sum, std::string aut) :
+  		DocumentPapier(Object), resume(sum), auteur(aut) {}
 
-	std::string getResume(){ return resume; }
-	void setResume (std::string papierResume){ resume = papierResume; }
+  	~Livre() {}
 
-	std::string getAuteur(){ return auteur; }
-	void setAuteur (std::string papierAuteur){ auteur = papierAuteur; }
+  	std::string getResume(){ return resume; }
+  	void setResume (std::string papierResume){ resume = papierResume; }
 
-	virtual void parleDeToi(DocumentPapier xyz) {
-		std::cout << "Je suis un livre, mon auteur est " << auteur;
-		xyz.parleDeToi();
-		std::cout << ", et mon resume est \"" << resume << "\".\n";
-	}
-};
+  	std::string getAuteur(){ return auteur; }
+  	void setAuteur (std::string papierAuteur){ auteur = papierAuteur; }
 
-class Dictionnaire : public Livre{
+  	virtual void parleDeToi(DocumentPapier xyz) {
+  		std::cout << "Je suis un livre, mon auteur est " << auteur;
+  		xyz.parleDeToi();
+  		std::cout << ", et mon resume est \"" << resume << "\".\n";
+  	}
+  };
 
-
-private:
-    int nbMots;
-    std::string langueSource; // Anglais
-    std::string langueCible; // Francais
-
-};
-class Revue : public DocumentPapier{
+  class Dictionnaire : public Livre{
 
 
-private:
-    int nbArticle;
-    std::string editorial; // Anglais
+  private:
+      int nbMots;
+      std::string langueSource; // Anglais
+      std::string langueCible; // Francais
+
+  };
+  class Revue : public DocumentPapier{
+
+
+  protected:
+      int nbArticle;
+      std::string editorial; // Anglais
+
+  };
+
+  Revue (base *Object,int revueNbArticle,std::string revueEditorial) :
+    DocumentPapier(Object), nbArticle(revueNbArticle), editorial(revueEditorial) {}
+
+  ~Revue(){}
+
+
+  virtual int getNbArticle (){
+   return this.nbArticle;
+  }
+
+  virtual void setNbArticle (int revueNbArticle){
+
+   this.nbArticle = this.revueNbArticle;
+
+  }
+
+
+  virtual std::string getEditorial (){
+
+   return this.editorial;
+
+  }
+
+  virtual void setEditorial (int revueEditorial){
+
+   this.nbArticle = this.revueEditorial;
+
+  }
+
+  virtual void parleDeToi(DocumentPapier xyz) {
+    std::cout << "Je suis une revue, mon editorial est " << this.editorial;
+    xyz.parleDeToi();
+    std::cout << ", et je suis composé \"" << this.nbArticle << " article\" .\n";
+  }
 
 };
 
 class Acte : public Revue{
 
 
-private:
+protected:
     std::string nomConference;
     std::string addresseConference;
 };
