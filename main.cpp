@@ -19,12 +19,15 @@ int main(){
 
 	Livre livre (pDoc, "Cours de Programmation Object", "Hamid Mcheick");
 	livre.parleDeToi(livre);
-	
+
 	Dictionnaire dico (pDoc, "Cours de Programmation Object", "Hamid Mcheick", 2000, "Anglais", "Francais");
 	dico.parleDeToi(dico);
 
   Revue revueAnimal (pDoc,10,"Les animaux de la Jungles");
   revueAnimal.parleDeToi(revueAnimal);
+
+  Acte ActeMinisterielle (pDoc,10,"Les animaux de la jungle"," Sauvage","La Jungle ");
+  ActeMinisterielle.parleDeToi(ActeMinisterielle);
 
 	system("pause");
 

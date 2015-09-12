@@ -69,7 +69,7 @@ public:
 
 	virtual void parleDeToi  (){
 		std::cout << ", mon titre est \"" << titre <<  "\", mon editeur est "
-		<< editeur << " , je suis compose de " << nbPage
+		<< editeur << " , je suis composé de " << nbPage
 		<< " pages et je suis ne en " << annee;
 	}
 
@@ -164,7 +164,7 @@ class Revue : public DocumentPapier{
       int nbArticle;
       std::string editorial; // Anglais
 
-  };
+  public:
 
   Revue (base *Object,int revueNbArticle,std::string revueEditorial) :
     DocumentPapier(Object), nbArticle(revueNbArticle), editorial(revueEditorial) {}
@@ -181,7 +181,6 @@ class Revue : public DocumentPapier{
 
   }
 
-
   virtual std::string getEditorial (){
 
    return editorial;
@@ -195,9 +194,9 @@ class Revue : public DocumentPapier{
   }
 
   virtual void parleDeToi(DocumentPapier xyz) {
-    std::cout << "Je suis une revue, mon editorial est " << this.editorial;
+    std::cout << "Je suis une revue, mon editorial est " << editorial;
     xyz.parleDeToi();
-    std::cout << ", et je suis composé \"" << this.nbArticle << " article\" .\n";
+    std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n";
   }
 
 };
@@ -205,7 +204,45 @@ class Revue : public DocumentPapier{
 class Acte : public Revue{
 
 
-protected:
+  protected:
     std::string nomConference;
-    std::string addresseConference;
+    std::string adresseConference;
+
+  public:
+
+    Acte (base *Object,std::string revueNbArticle,std::string revueEditorial,std::string acteNomConf,
+    std::string acteAddConf) :
+      Revue(Object,revueNbArticle,revueEditorial),nomConference(acteNomConf),adresseConference(acteAddConf) {}
+
+    ~Acte(){}
+
+
+      virtual std::string getNomConf (){
+       return nomConference;
+      }
+
+      virtual void setNomConf(std::string acteNomConf){
+
+       nomConference = acteNomConf;
+
+      }
+
+      virtual std::string getAddrConf (){
+
+       return adresseConference;
+
+      }
+
+      virtual void setEditorial (std::string acteAdrConf){
+
+       adresseConference = acteAdrConf;
+
+      }
+
+      virtual void parleDeToi(DocumentPapier xyz) {
+        std::cout << "Je suis un acte, mon editorial est " << editorial;
+        xyz.parleDeToi();
+        std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n" <<
+        "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference "\" . \n" ;
+      }
 };
