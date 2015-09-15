@@ -67,11 +67,12 @@ public:
 		annee = papierAnnee;
 	}
 
-	virtual void parleDeToi  (){
+	virtual void parleDeToi() const{
 		std::cout << ", mon titre est \"" << titre <<  "\", mon editeur est "
 		<< editeur << " , je suis composé de " << nbPage
 		<< " pages et je suis ne en " << annee;
 	}
+
 
 };
 
