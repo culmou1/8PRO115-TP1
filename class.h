@@ -67,12 +67,11 @@ public:
 		annee = papierAnnee;
 	}
 
-	virtual void parleDeToi() const{
+	virtual void parleDeToi () const{
 		std::cout << ", mon titre est \"" << titre <<  "\", mon editeur est "
 		<< editeur << " , je suis composé de " << nbPage
 		<< " pages et je suis ne en " << annee;
 	}
-
 
 };
 
@@ -106,9 +105,9 @@ class Livre : public DocumentPapier{
 	void setAuteur (std::string livreAuteur) {
 		auteur = livreAuteur;
 	}
-  	virtual void parleDeToi(DocumentPapier xyz) {
+  	void parleDeToi() const  {
   		std::cout << "Je suis un livre, mon auteur est " << auteur;
-  		xyz.parleDeToi();
+      DocumentPapier::parleDeToi();
   		std::cout << ", et mon resume est \"" << resume << "\".\n";
   	}
   };
@@ -152,9 +151,9 @@ public :
 		langueCible = dicLangueCible;
 	}
 
-	void parleDeToi (DocumentPapier xyz) {
+	void parleDeToi () const {
 		std::cout << "Je suis un dictionnaire " << langueSource+ "-" +langueCible << " de " << nbMots << " mots, mon auteur est " << auteur;
-		xyz.parleDeToi();
+		DocumentPapier::parleDeToi();
 		std::cout << ", et mon resume est \"" << resume << "\".\n";
 	}
 };
@@ -194,9 +193,9 @@ class Revue : public DocumentPapier{
 
   }
 
-  virtual void parleDeToi(DocumentPapier xyz) {
+   void parleDeToi() const {
     std::cout << "Je suis une revue, mon editorial est " << editorial;
-    xyz.parleDeToi();
+    DocumentPapier::parleDeToi();
     std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n";
   }
 
@@ -240,9 +239,9 @@ class Acte : public Revue{
 
       }
 
-      virtual void parleDeToi(DocumentPapier xyz) {
+       void parleDeToi() const {
         std::cout << "Je suis un acte, mon editorial est " << editorial;
-        xyz.parleDeToi();
+        DocumentPapier::parleDeToi();
         std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n" <<
         "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
       }

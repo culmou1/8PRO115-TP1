@@ -5,7 +5,7 @@
 // http://stackoverflow.com/questions/8777724/store-two-classes-with-the-same-base-class-in-a-stdvector
 #include <iostream>
 #include <string>
-#include <list>
+#include <vector>
 #include "class.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ using namespace std;
 int main(){
 	pDoc = new struct base;
 
-	typedef list<DocumentPapier*> Path; // Initialisation du vector de class DocumentPapier
+	typedef vector<DocumentPapier*> Path; // Initialisation du vector de class DocumentPapier
 
 	Path myVec;
 
@@ -27,24 +27,26 @@ int main(){
 	/*DocumentPapier papier(pDoc);
 	papier.parleDeToi();*/
 
-	Livre* livre = new Livre(pDoc, "Cours de Programmation Object", "Hamid Mcheick");
-	myVec.push_back(livre);
+
+	myVec.push_back(new Livre (pDoc, "Cours de Programmation Object", "Hamid Mcheick"));
 	//livre.parleDeToi(livre);
 
-	Dictionnaire* dico= new Dictionnaire(pDoc, "Cours de Programmation Object", "Hamid Mcheick", 2000, "Anglais", "Francais");
-	myVec.push_back(dico);
+
+	myVec.push_back(new Dictionnaire(pDoc, "Cours de Programmation Object", "Hamid Mcheick", 2000, "Anglais", "Francais"));
 	//dico.parleDeToi(dico);
 
-  Revue* revueAnimal = new Revue(pDoc,10,"Les animaux de la Jungles");
-	myVec.push_back(revueAnimal);
+	myVec.push_back(new Revue(pDoc,10,"Les animaux de la Jungles"));
   //revueAnimal.parleDeToi(revueAnimal);
 
-  Acte* ActeMinisterielle = new Acte(pDoc,10,"Les animaux de la jungle"," Sauvage","La Jungle ");
-	myVec.push_back(ActeMinisterielle);
+
+	myVec.push_back(new Acte(pDoc,10,"Les animaux de la jungle"," Sauvage","La Jungle "));
+
+	myVec[3]->setPage(10000000);
   //ActeMinisterielle.parleDeToi(ActeMinisterielle);
 
-	for (Path::size_type i = 0; i < myVec.size();++i){
-		(myVec[i]).parleDeToi(*myVec[i]);
+	for (int i = 0; i < myVec.size();++i){
+		myVec[i]->parleDeToi();
+		delete myVec[i];
 	}
 	system("pause");
 
