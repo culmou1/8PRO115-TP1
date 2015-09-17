@@ -1,3 +1,7 @@
+#ifndef BASE_H
+#define BASE_H
+
+
 #include <iostream>
 #include <string>
 
@@ -35,35 +39,35 @@ public:
 	virtual ~DocumentPapier() {};
 
 
-	virtual std::string getEditeur  (){
+	std::string getEditeur  (){
 		return editeur;
 	}
 
-	virtual void setEditeur (std::string papierEditeur){
+	void setEditeur (std::string papierEditeur){
 		editeur = papierEditeur;
 	}
 
-	virtual std::string getTitre  (){
+	std::string getTitre  (){
 		return titre;
 	}
 
-	virtual void setTitre (std::string papierTitre){
+	void setTitre (std::string papierTitre){
 		titre = papierTitre;
 	}
 
-	virtual int getNbPage  (){
+	int getNbPage  (){
 		return nbPage;
 	}
 
-	virtual void setPage (int papierNbPage){
+	void setPage (int papierNbPage){
 		nbPage = papierNbPage;
 	}
 
-	virtual int getAnnee (){
+	int getAnnee (){
 		return annee;
 	}
 
-	virtual void setAnnes (int papierAnnee){
+	void setAnnes (int papierAnnee){
 		annee = papierAnnee;
 	}
 
@@ -109,6 +113,7 @@ class Livre : public DocumentPapier{
   		std::cout << "Je suis un livre, mon auteur est " << auteur;
       DocumentPapier::parleDeToi();
   		std::cout << ", et mon resume est \"" << resume << "\".\n";
+		std::cout << " -----------------------------------------------------------------------------------" << std::endl;
   	}
   };
 
@@ -155,6 +160,7 @@ public :
 		std::cout << "Je suis un dictionnaire " << langueSource+ "-" +langueCible << " de " << nbMots << " mots, mon auteur est " << auteur;
 		DocumentPapier::parleDeToi();
 		std::cout << ", et mon resume est \"" << resume << "\".\n";
+		std::cout << " -----------------------------------------------------------------------------------" << std::endl;
 	}
 };
 
@@ -171,23 +177,25 @@ class Revue : public DocumentPapier{
 
   ~Revue(){}
 
-  virtual int getNbArticle (){
+  int getNbArticle (){
+
    return nbArticle;
+
   }
 
-  virtual void setNbArticle (int revueNbArticle){
+  void setNbArticle (int revueNbArticle){
 
    nbArticle = revueNbArticle;
 
   }
 
-  virtual std::string getEditorial (){
+  std::string getEditorial (){
 
    return editorial;
 
   }
 
-  virtual void setEditorial (int revueEditorial){
+  void setEditorial (int revueEditorial){
 
    nbArticle = revueEditorial;
 
@@ -197,6 +205,7 @@ class Revue : public DocumentPapier{
     std::cout << "Je suis une revue, mon editorial est " << editorial;
     DocumentPapier::parleDeToi();
     std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n";
+	std::cout << " -----------------------------------------------------------------------------------" << std::endl;
   }
 
 };
@@ -217,32 +226,38 @@ class Acte : public Revue{
     ~Acte(){}
 
 
-      virtual std::string getNomConf (){
-       return nomConference;
-      }
+    std::string getNomConf (){
+		
+		return nomConference;
 
-      virtual void setNomConf(std::string acteNomConf){
+    }
+
+    void setNomConf(std::string acteNomConf){
 
        nomConference = acteNomConf;
 
-      }
+    }
 
-      virtual std::string getAddrConf (){
+    std::string getAddrConf (){
 
        return adresseConference;
 
-      }
+    }
 
-      virtual void setEditorial (std::string acteAdrConf){
+    void setEditorial (std::string acteAdrConf){
 
        adresseConference = acteAdrConf;
 
-      }
+    }
 
-       void parleDeToi() const {
+    void parleDeToi() const {
         std::cout << "Je suis un acte, mon editorial est " << editorial;
         DocumentPapier::parleDeToi();
-        std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n" <<
-        "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
-      }
+        std::cout << ", et je suis composé de \"" << nbArticle << "\" article ." <<
+        "la conférence a été présenté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
+		std::cout << " -----------------------------------------------------------------------------------" << std::endl;
+    }
 };
+
+
+#endif
