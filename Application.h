@@ -1,7 +1,6 @@
 #ifndef APP_H
 #define APP_H
 
-#include "BAse.h"
 #include <vector>
 
 
@@ -25,7 +24,7 @@ private:
 	Data *construc;
 
 public:
-	Application() { 
+	Application() {
 		construc = new Data;
 		pDoc = new base;
 	}
@@ -36,7 +35,7 @@ public:
 
 	bool LectureChoix() {
 		int choix;
-		
+
 		std::cout << std::endl << " -----------------------------------------------------------------------------------" << std::endl;
         std::cout << "INVENTAIRE DE LA BIBLIOTHEQUE " << std::endl;
         std::cout << "Veuillez choisir parmi les operations suivantes :" << std::endl;
@@ -51,14 +50,14 @@ public:
         std::cin >> choix;
 
 		switch (choix) {
-		case 1 : 
+		case 1 :
 			CreerLivre();
 			return true;
-			
-		case 2 : 
+
+		case 2 :
 			CreerDictionnaire();
 			return true;
-			
+
 		case 3 :
 			CreerRevue();
 			return true;
@@ -75,7 +74,7 @@ public:
 			std::cout << "******FERMETURE DE L'INVENTAIRE******" << std::endl;
 			return false;
 
-		default : 
+		default :
 			std::cout << "Sorry I don't understand" << std::endl;
 			return true;
 		}
@@ -91,8 +90,8 @@ public:
 		std::cin.clear();
 		std::cout<< std::endl << "Resume : "; getline (std::cin, construc->resume);
 		std::cout<< std::endl << "Annee : "; std::cin >> pDoc->annee;
-		std::cout<< std::endl << "nombrePages : "; std::cin >> pDoc->nbPage;
-
+		std::cout<< std::endl << "Nombre Pages : "; std::cin >> pDoc->nbPage;
+		std::cout << "\n";
 		myVec.push_back(new Livre (pDoc, construc->resume, construc->auteur));
 	}
 
@@ -105,12 +104,13 @@ public:
 		std::cout<< std::endl << "Titre : "; getline (std::cin, pDoc->titre);
 		std::cin.clear();
 		std::cout<< std::endl << "Resume : "; getline (std::cin, construc->resume);
+		std::cin.clear();
 		std::cout<< std::endl << "Annee : "; std::cin >> pDoc->annee;
-		std::cout<< std::endl << "nombrePages : "; std::cin >> pDoc->nbPage;
-		std::cout<< std::endl << "langueSource : "; std::cin >> construc->langueSource;
-		std::cout<< std::endl << "langueCible : "; std::cin >> construc->langueCible;
-		std::cout<< std::endl << "nombreMots : "; std::cin >> construc->nbMots;
-
+		std::cout<< std::endl << "Nombre Pages : "; std::cin >> pDoc->nbPage;
+		std::cout<< std::endl << "Langue Source : "; std::cin >> construc->langueSource;
+		std::cout<< std::endl << "Langue Cible : "; std::cin >> construc->langueCible;
+		std::cout<< std::endl << "Nombre Mots : "; std::cin >> construc->nbMots;
+		std::cout << "\n";
 		myVec.push_back(new Dictionnaire (pDoc, construc->resume, construc->auteur, construc->nbMots, construc->langueSource, construc->langueCible));
 	}
 
@@ -122,9 +122,9 @@ public:
 		std::cin.clear();
 		std::cout<< std::endl << "Titre : "; getline (std::cin, pDoc->titre);
 		std::cout<< std::endl << "Annee : "; std::cin >> pDoc->annee;
-		std::cout<< std::endl << "nombrePages : "; std::cin >> pDoc->nbPage;
-		std::cout<< std::endl << "nombreArticles : "; std::cin >> construc->nbArticle;
-
+		std::cout<< std::endl << "Nombre Pages : "; std::cin >> pDoc->nbPage;
+		std::cout<< std::endl << "Nombre Articles : "; std::cin >> construc->nbArticle;
+		std::cout << "\n";
 		myVec.push_back(new Revue (pDoc, construc->nbArticle, construc->editorial));
 	}
 
@@ -134,15 +134,15 @@ public:
 		std::cin.clear();
 		std::cout<< std::endl << "Editeur : "; getline (std::cin, pDoc->editeur);
 		std::cin.clear();
-		std::cout<< std::endl << "nomConference : "; getline (std::cin, construc->nomConference);
+		std::cout<< std::endl << "Nom de la Conférence : "; getline (std::cin, construc->nomConference);
 		std::cin.clear();
-		std::cout<< std::endl << "adresseConference : "; getline (std::cin, construc->adresseConference);
+		std::cout<< std::endl << "Adresse de la Conference : "; getline (std::cin, construc->adresseConference);
 		std::cin.clear();
 		std::cout<< std::endl << "Titre : "; getline (std::cin, pDoc->titre);
 		std::cout<< std::endl << "Annee : "; std::cin >> pDoc->annee;
-		std::cout<< std::endl << "nombrePages : "; std::cin >> pDoc->nbPage;
-		std::cout<< std::endl << "nombreArticles : "; std::cin >> construc->nbArticle;
-
+		std::cout<< std::endl << "Nombre Pages : "; std::cin >> pDoc->nbPage;
+		std::cout<< std::endl << "Nombre Articles : "; std::cin >> construc->nbArticle;
+		std::cout << "\n";
 		myVec.push_back(new Acte (pDoc, construc->nbArticle, construc->editorial, construc->nomConference, construc->adresseConference));
 	}
 
