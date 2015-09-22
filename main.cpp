@@ -4,18 +4,18 @@
 // https://en.wikipedia.org/wiki/Object_slicing
 // http://stackoverflow.com/questions/8777724/store-two-classes-with-the-same-base-class-in-a-stdvector
 
-
-
 #include <iostream>
 #include <string>
-#include <vector>
 #include "class.h"
+#include "Application.h"
 
 using namespace std;
 
 
 int main(){
-	pDoc = new struct base;
+	Application biblio;
+
+	while(biblio.LectureChoix()) {} // Tant qu'il est vrai
 
 	typedef vector<DocumentPapier*> Path; // Initialisation du vector de class DocumentPapier
 
@@ -45,8 +45,8 @@ int main(){
 		myVec[i]->parleDeToi();
 		delete myVec[i];
 	}
+
 	system("pause");
 
-	delete pDoc;
   return 0;
 }
