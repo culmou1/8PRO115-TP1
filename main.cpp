@@ -15,8 +15,7 @@ using namespace std;
 int main(){
 	Application biblio;
 
-	while(biblio.LectureChoix()) {} // Tant qu'il est vrai
-
+	while(biblio.LectureChoix()) {} // Tant qu'il est vrai il execute le Switch Case
 
 	system("pause");
 
