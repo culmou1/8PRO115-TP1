@@ -17,7 +17,7 @@ struct Data {
     std::string adresseConference;
 } *construc;
 
-// Classe contenant une structure de données (vector myVec) pour collecter des objets (instances) des classes Livre, Dictionaire, 
+// Classe contenant une structure de données (vector myVec) pour collecter des objets (instances) des classes Livre, Dictionaire,
 // Revue, Acte. Cette structure nous permet d’appeler la méthode parleDeToi(…) sur toutes les instances de classes.
 class Application {
 
@@ -26,7 +26,7 @@ private:
 
 public:
 	// Constructeur
-	Application() { 
+	Application() {
 		construc = new Data;
 		pDoc = new base;
 	}
@@ -37,11 +37,11 @@ public:
 		delete pDoc;
 	}
 
-	// Méthodes traitant le choix de l'utilisateur à l'aide d'un switch-case. Elle appelle les méthodes respectives pour créer des instances 
+	// Méthodes traitant le choix de l'utilisateur à l'aide d'un switch-case. Elle appelle les méthodes respectives pour créer des instances
 	// des classes Livre, Dictionaire, Revue, Acte ou pour appeler la méthode parleDeToi(…) sur toutes les instances de classes.
 	bool LectureChoix() {
 		int choix;
-		
+
 		std::cout << std::endl << " -----------------------------------------------------------------------------------" << std::endl;
         std::cout << "INVENTAIRE DE LA BIBLIOTHEQUE " << std::endl;
         std::cout << "Veuillez choisir parmi les operations suivantes :" << std::endl;
@@ -57,14 +57,14 @@ public:
 
 		// Execute selon le choix d'utilisateur une méthode
 		switch (choix) {
-		case 1 : 
+		case 1 :
 			CreerLivre();
 			return true;
-			
-		case 2 : 
+
+		case 2 :
 			CreerDictionnaire();
 			return true;
-			
+
 		case 3 :
 			CreerRevue();
 			return true;
@@ -81,7 +81,7 @@ public:
 			std::cout << "******FERMETURE DE L'INVENTAIRE******" << std::endl;
 			return false;
 
-		default : 
+		default :
 			std::cout << "******COMMANDE INCONNUE******" << std::endl;
 			return true;
 		}
