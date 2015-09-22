@@ -1,3 +1,6 @@
+#ifndef HEADER_FILE
+#define HEADER_FILE
+
 #include <iostream>
 #include <string>
 
@@ -18,6 +21,7 @@ class DocumentPapier{
   // Par default les variables sont privés (doit être appeler avec un méthode)
 
 protected:
+
 	std::string editeur;
 	std::string titre;
 	int nbPage;
@@ -246,3 +250,4 @@ class Acte : public Revue{
         "La conférence à été présenté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
       }
 };
+#endif
