@@ -243,6 +243,6 @@ class Acte : public Revue{
         std::cout << "Je suis un acte, mon editorial est " << editorial;
         DocumentPapier::parleDeToi();
         std::cout << ", et je suis composé de \"" << nbArticle << "\" article .\n" <<
-        "la conférence a été présenseté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
+        "La conférence a été présenté au \"" << adresseConference << "\" et le nom est \"" << nomConference << "\" . \n" ;
       }
 };
